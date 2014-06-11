@@ -1,10 +1,12 @@
+require 'google_hash'
+
 module AbstractImporter
   class IdMap
     
     class IdNotMappedError < StandardError; end
     
     def initialize
-      @id_map = Hash.new { |hash, key| hash[key] = {} }
+      @id_map = Hash.new { |hash, key| hash[key] = GoogleHashDenseIntToInt.new }
     end
     
     
